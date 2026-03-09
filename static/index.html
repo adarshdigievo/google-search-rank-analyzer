@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Ranking Analyser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main>
+        <section class="search-section">
+            <header class="app-header">
+                <h1 class="app-title">Search Ranking Analyser</h1>
+                <p class="app-tagline">Compare search rankings across multiple countries and engines</p>
+            </header>
+            <form class="search-form" id="search-form">
+                <div class="form-group autocomplete-wrapper">
+                    <input type="text" id="query" name="query" placeholder="Enter search term..." required autocomplete="off">
+                    <div class="suggestions-dropdown hidden" id="suggestions-dropdown"></div>
+                </div>
+                <div class="form-group">
+                    <input
+                        type="text"
+                        id="domain"
+                        name="domain"
+                        placeholder="e.g. example.com, competitor.com"
+                        autocomplete="off"
+                    >
+                </div>
+                <button type="submit" id="search-btn">Analyse Rankings</button>
+            </form>
+        </section>
+
+        <section class="results-section hidden">
+            <div class="summary-bar">
+                <span class="summary-query"></span>
+                <span class="summary-domain"></span>
+                <span class="summary-timestamp"></span>
+                <span class="summary-badge"></span>
+            </div>
+
+            <div class="rankings-grid"></div>
+
+            <div class="chart-section">
+                <h2>Ranking Comparison</h2>
+                <div class="chart-legend"></div>
+                <div class="chart-container"></div>
+            </div>
+
+        </section>
+
+        <section class="history-section">
+            <h2>Recent Searches</h2>
+            <div class="history-list"></div>
+        </section>
+    </main>
+
+    <div class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Searching across 5 countries...</p>
+    </div>
+
+    <div class="error-toast hidden">
+        <span class="error-message"></span>
+        <button class="error-close" type="button" aria-label="Close error">&times;</button>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

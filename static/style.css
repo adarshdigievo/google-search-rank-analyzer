@@ -1,0 +1,717 @@
+/* ===========================
+   CSS Custom Properties
+   =========================== */
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a26;
+  --bg-card-hover: #222233;
+  --border: #2a2a3a;
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888a0;
+  --text-muted: #555570;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --rank-excellent: #10b981;
+  --rank-good: #f59e0b;
+  --rank-fair: #f97316;
+  --rank-poor: #ef4444;
+  --rank-none: #6b7280;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ===========================
+   Base Styles
+   =========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* ===========================
+   Search Section
+   =========================== */
+.search-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 15vh 20px 40px;
+  text-align: center;
+}
+
+.search-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.search-section .app-tagline {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-form input[type="text"] {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+.search-form input[type="text"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.search-form button {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-form button:hover {
+  background-color: var(--accent-hover);
+}
+
+.search-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 601px) {
+  .search-form {
+    flex-direction: row;
+  }
+
+  .search-form input[type="text"] {
+    flex: 1;
+  }
+}
+
+/* ===========================
+   Results Section
+   =========================== */
+.results-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===========================
+   Summary Bar
+   =========================== */
+.summary-bar {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.summary-bar .summary-query {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summary-bar .summary-domain {
+  color: var(--text-secondary);
+}
+
+.summary-bar .badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.badge-cached {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--rank-excellent);
+}
+
+.badge.badge-live {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: var(--accent);
+}
+
+.summary-bar .summary-timestamp {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ===========================
+   Rankings Grid
+   =========================== */
+.rankings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* ===========================
+   Ranking Card
+   =========================== */
+.ranking-card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ranking-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--bg-card-hover);
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.card-flag {
+  font-size: 1.5rem;
+}
+
+.card-country {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.card-position {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rank-excellent {
+  color: var(--rank-excellent);
+}
+
+.rank-good {
+  color: var(--rank-good);
+}
+
+.rank-fair {
+  color: var(--rank-fair);
+}
+
+.rank-poor {
+  color: var(--rank-poor);
+}
+
+.rank-none {
+  color: var(--rank-none);
+}
+
+.card-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.card-url {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-top: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.card-snippet {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-top: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===========================
+   Chart Section
+   =========================== */
+.chart-section {
+  margin-top: 40px;
+}
+
+.chart-section h2 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   Chart Container
+   =========================== */
+.chart-container {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+/* ===========================
+   Chart Row
+   =========================== */
+.chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.chart-row:last-child {
+  margin-bottom: 0;
+}
+
+.chart-label {
+  min-width: 130px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-bar-wrapper {
+  flex: 1;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  height: 36px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chart-bar {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.chart-bar-text {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Bar color classes */
+.chart-bar.rank-excellent {
+  background-color: var(--rank-excellent);
+}
+
+.chart-bar.rank-good {
+  background-color: var(--rank-good);
+}
+
+.chart-bar.rank-fair {
+  background-color: var(--rank-fair);
+}
+
+.chart-bar.rank-poor {
+  background-color: var(--rank-poor);
+}
+
+.chart-bar.rank-none {
+  background-color: var(--rank-none);
+  min-width: fit-content;
+  padding: 0 12px;
+}
+
+/* ===========================
+   Loading Overlay
+   =========================== */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-overlay .loading-text {
+  color: var(--text-secondary);
+  margin-top: 16px;
+}
+
+/* ===========================
+   Error Toast
+   =========================== */
+.error-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background-color: #1a1020;
+  border: 1px solid var(--rank-poor);
+  border-radius: 12px;
+  padding: 16px 20px;
+  z-index: 200;
+  max-width: 400px;
+  transform: translateX(calc(100% + 40px));
+  transition: transform 0.3s ease;
+}
+
+.error-toast.visible {
+  transform: translateX(0);
+}
+
+.error-toast .error-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* ===========================
+   History Section
+   =========================== */
+.history-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.history-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* ===========================
+   History List
+   =========================== */
+.history-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===========================
+   History Chip
+   =========================== */
+.history-chip {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.history-chip:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* ===========================
+   SERP Feature Badges
+   =========================== */
+.serp-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.serp-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background-color: rgba(99, 102, 241, 0.12);
+  color: var(--accent-hover);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.serp-badge-domain {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--rank-excellent);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+/* ===========================
+   Multi-Domain Card Layout
+   =========================== */
+.card-domains {
+  margin-top: 12px;
+}
+
+.domain-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.domain-entry:last-child {
+  border-bottom: none;
+}
+
+.domain-name {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 55%;
+}
+
+.domain-position {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.domain-color-0 { color: var(--accent); }
+.domain-color-1 { color: #ec4899; }
+.domain-color-2 { color: #f59e0b; }
+.domain-color-3 { color: #10b981; }
+
+/* ===========================
+   Chart: Domain Bar Colors
+   =========================== */
+.chart-bar.domain-bg-0 { background-color: var(--accent); }
+.chart-bar.domain-bg-1 { background-color: #ec4899; }
+.chart-bar.domain-bg-2 { background-color: #f59e0b; }
+.chart-bar.domain-bg-3 { background-color: #10b981; }
+
+/* ===========================
+   Chart Legend
+   =========================== */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* ===========================
+   Chart: Grouped Bars
+   =========================== */
+.chart-row-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.chart-row-group:last-child {
+  margin-bottom: 0;
+}
+
+.chart-bars-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chart-bar-grouped {
+  height: 28px;
+}
+
+/* ===========================
+   Autocomplete Dropdown
+   =========================== */
+.autocomplete-wrapper {
+  position: relative;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: var(--shadow);
+}
+
+.suggestions-dropdown.hidden {
+  display: none;
+}
+
+.suggestion-item {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.suggestion-item:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+/* ===========================
+   Animations
+   =========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ranking-card {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.ranking-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.ranking-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.ranking-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.ranking-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.ranking-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 600px) {
+  .search-section {
+    padding-top: 8vh;
+  }
+
+  .search-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .summary-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .chart-label {
+    min-width: 90px;
+  }
+}
