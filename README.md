@@ -33,19 +33,19 @@ The frontend is vanilla HTML, CSS, and JS with a dark theme. Rankings are displa
 
 ## Setup
 
-1. Install dependencies:
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/), if not already installed. Then perform a sync to install dependencies:
    ```bash
-   pip install fastapi uvicorn google-search-results
+   uv sync
    ```
 
-2. Set your SerpAPI key:
+2. Set your [SerpAPI](https://serpapi.com/dashboard) key:
    ```bash
    export SERPAPI_KEY=your_key_here
    ```
 
 3. Run the server:
    ```bash
-   python server.py
+   uv run server.py
    ```
 
 4. Open http://127.0.0.1:8000 in your browser.
