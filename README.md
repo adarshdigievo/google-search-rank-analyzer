@@ -2,8 +2,9 @@
 
 A web app that checks where a domain ranks on Google across multiple countries. Enter a search query and a domain, and it queries Google via SerpAPI for the US, UK, India, Australia, and Canada, then shows the ranking position in each country with visual cards and a bar chart.
 
+## Vibe Coded With Claude
 
-## Built With Claude (Vibe Coded)
+![](https://img.shields.io/badge/Claude%20Assisted-100%25-00a67d?logo=anthropic)
 
 This project was built with [Claude Code](https://claude.com/claude-code), Anthropic's CLI tool for AI-assisted development. The implementation plan, backend, frontend, and styling were all generated through conversation with Claude. SerpAPI Python SDK source code was added to the project's dependency docs folder using [gitingest.io](https://gitingest.io) to give Claude full context on the API.
 
@@ -48,3 +49,7 @@ The frontend is vanilla HTML, CSS, and JS with a dark theme. Rankings are displa
    ```
 
 4. Open http://127.0.0.1:8000 in your browser.
+
+## Results
+
+![Search Ranking Analyser Screenshot](static/demo.png)
